@@ -1,8 +1,29 @@
 import Server from './server/server';
 import router from './router/router';
 
-const server = Server.init(3000);
+import http = require('http');
+import socketIO = require('socket.io');
+import express = require('express');
+import path = require('path');
 
-server.app.use(router);
+const expressServer = Server.init(8080);
+const server = http.createServer(expressServer.app);
+const io = socketIO.listen(server);
 
-server.start(() => console.log('Server started!'));
+expressServer
+  .app
+  .use(router);
+
+expressServer
+  .app
+  .use(express.static(path.join(__dirname, 'frontend')));
+
+io.on('connection', (socket : SocketIO.Socket) => {
+  console.log('new socket connected!');
+  socket.on('message', (message : string) => {
+    io.emit('messageFromServer', {message});
+    console.log(message);
+  })
+});
+
+server.listen(8080);

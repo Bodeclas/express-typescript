@@ -1,4 +1,6 @@
-var express = require('express');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express = require("express");
 var Server = (function () {
     function Server(port) {
         this.port = port;
@@ -11,6 +13,6 @@ var Server = (function () {
         return new Server(port);
     };
     return Server;
-})();
+}());
 exports.default = Server;
 //# sourceMappingURL=server.js.map
