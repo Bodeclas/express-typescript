@@ -1,11 +1,13 @@
 ## Express with TypeScript
 
-Express server with TypeScript!
+A basic Express Server and Socket.io built with TypeScript.
 
 # Requeriments
 
-Run `npm install -g tsc` and `npm install -g nodemon`
+Clone this repository.
+
+Run `npm install -g tsc` and `npm install -g nodemon`.
 
 # Local Server
 
-Run `npm start`
+Run `npm start`.
